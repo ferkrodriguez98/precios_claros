@@ -2,3 +2,4 @@ data
 crudo
 env 
 .vscode
+.DS_Store

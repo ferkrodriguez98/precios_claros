@@ -2,7 +2,7 @@
 
 ## Descomprimir todos los zip
 
-Para que el script funcione correctamente, la carpeta `crudo` (en el root del proyecto) debe tener la siguiente estructura:
+Para que el script funcione correctamente, la carpeta `crudo` (donde sea que esté) debe tener la siguiente estructura:
 
 ```
 crudo/

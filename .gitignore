@@ -1,5 +1,6 @@
 data
 crudo
-env 
+env
 .vscode
 .DS_Store
+data_daily_test

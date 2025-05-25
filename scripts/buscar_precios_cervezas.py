@@ -12,11 +12,11 @@ def combinar_precios(precios):
         return precios[0]
     return '-'.join(sorted(map(str, precios)))
 
-def buscar_precios_cervezas(carpeta_base, ids_cervezas, df_comercios):
+def buscar_precios_cervezas(carpeta_base, ids_cervezas, df_comercios, año = '2025'):
     resultados = []
 
     # Recorrer todos los archivos CSV en la carpeta 2025
-    patron_busqueda = str(Path(carpeta_base) / '2025' / '*.csv')
+    patron_busqueda = str(Path(carpeta_base) / año / '*.csv')
     archivos = glob.glob(patron_busqueda)
 
     # Filtrar archivos mayoristas
@@ -98,14 +98,15 @@ def buscar_precios_cervezas(carpeta_base, ids_cervezas, df_comercios):
         df_agrupado = df_agrupado[columnas_agrupacion + columnas_fecha]
 
         # Guardar el resultado en un nuevo archivo CSV
-        df_agrupado.to_csv('precios_cervezas_2025.csv', index=False)
-        print(f"\nSe guardaron los resultados en precios_cervezas_2025.csv")
+        df_agrupado.to_csv(f'precios_cervezas_{año}.csv', index=False)
+        print(f"\nSe guardaron los resultados en precios_cervezas_{año}.csv")
         print(f"Dimensiones del archivo final: {df_agrupado.shape}")
     else:
         print("\nNo se encontraron resultados para guardar.")
 
 if __name__ == "__main__":
-    carpeta_base = "/Volumes/SSD_Fermin/TP_ANALITICA/data"
+    carpeta_base = "/Users/anoguera/Documents/GitHub/precios_claros/data"
+    año = '2025'
     
     # Leer ids_cervezas_unicos.csv
     print("Leyendo archivo ids_cervezas_unicos.csv...")
@@ -117,4 +118,4 @@ if __name__ == "__main__":
     df_comercios = pd.read_csv('ids_comercios.csv', sep='|')
     print(f"Comercios encontrados: {len(df_comercios)}\n")
 
-    buscar_precios_cervezas(carpeta_base, ids_cervezas, df_comercios)
+    buscar_precios_cervezas(carpeta_base, ids_cervezas, df_comercios, año)

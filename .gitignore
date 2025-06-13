@@ -1,4 +1,5 @@
-data
+data/precios_cervezas_2025.csv
+data/precios_cervezas_2025_transformado.csv
 crudo
 env
 .vscode
